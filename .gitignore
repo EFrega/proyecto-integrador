@@ -1,0 +1,18 @@
+# Ignorar node_modules en la raíz (backend)
+node_modules/
+
+# Archivos de configuración local que no deberían subirse
+.env
+
+# Archivos del sistema operativo (ejemplo para macOS)
+.DS_Store
+
+# Carpetas de construcción que se pueden regenerar
+build/
+dist/
+
+# Ignorar logs
+*.log
+
+# Ignorar archivos de configuración del editor (por ejemplo, Visual Studio Code)
+.vscode/
