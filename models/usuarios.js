@@ -1,4 +1,5 @@
 // models/Usuario.js
+const bcrypt = require('bcryptjs');  // Necesitamos bcrypt para cifrar y comparar contraseñas
 
 module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define('Usuario', {
@@ -24,7 +25,25 @@ module.exports = (sequelize, DataTypes) => {
     // Opciones del modelo
     tableName: 'usuarios',  // Definimos explícitamente el nombre de la tabla
     timestamps: false, // No necesitamos las columnas createdAt y updatedAt
+    hooks: {
+      // Hook para cifrar la contraseña antes de crear o actualizar el usuario
+      beforeCreate: async (usuario) => {
+        if (usuario.contrasena) {
+          usuario.contrasena = await bcrypt.hash(usuario.contrasena, 10); // Cifra la contraseña antes de guardarla
+        }
+      },
+      beforeUpdate: async (usuario) => {
+        if (usuario.contrasena) {
+          usuario.contrasena = await bcrypt.hash(usuario.contrasena, 10); // Cifra la contraseña antes de actualizarla
+        }
+      }
+    }
   });
+
+  // Método de instancia para comparar contraseñas
+  Usuario.prototype.comparePassword = async function(contrasena) {
+    return bcrypt.compare(contrasena, this.contrasena);  // Compara la contraseña proporcionada con la almacenada
+  };
 
   return Usuario;
 };

@@ -1,15 +1,19 @@
+// index.js
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
-const fs = require('fs'); // Importamos el módulo fs
-const { Sequelize } = require('sequelize');
+const fs = require('fs');
+const loginRoutes = require('../routes/loginRoute');  // Importamos las rutas de login
+const authenticateToken = require('../middlewares/auth');  // Middleware para la autenticación del token
+const sequelize = require('../config/database');  // Importamos la configuración de la base de datos
+const { Usuario } = require('../models/usuarios');  // Asegúrate de tener el modelo de Usuario importado correctamente
 
-// Crea una aplicación de Express
+// Crear la aplicación de Express
 const app = express();
 
-// Habilitar CORS (si es necesario para la comunicación entre tu frontend y backend)
-app.use(cors());
+app.use(express.json());  // Para analizar las solicitudes con cuerpo JSON
+app.use(cors());  // Habilitar CORS
 
 // Configura el servidor HTTP para usar con Socket.io
 const server = http.createServer(app);
@@ -32,30 +36,32 @@ io.on('connection', (socket) => {
     });
 });
 
-// Configura el puerto del servidor
+// Rutas de login
+app.use('/login', loginRoutes);
+
+// Ruta protegida (solo accesible si el token es válido)
+app.get('/usuarios/:id', authenticateToken, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const usuario = await Usuario.findOne({ where: { Usuario: usuario } });
+        
+        if (!usuario) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+        
+        res.json(usuario);
+    } catch (err) {
+        return res.status(500).send('Error en el servidor');
+    }
+});
+
+// Configuración del puerto del servidor
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
     logToFile(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
-// Configuración de la base de datos MySQL
-// Asegurate de verificar los datos propios
-const sequelize = new Sequelize('proyectointegrador', 'root', '**********', {
-    host: 'localhost',
-    dialect: 'mysql',
-});
-
-// Verifica la conexión
-sequelize.authenticate()
-    .then(() => {
-        console.log('Conexión con la base de datos establecida correctamente.');
-        logToFile('Conexión con la base de datos establecida correctamente.');
-    })
-    .catch(err => {
-        console.error('No se pudo conectar a la base de datos:', err);
-        logToFile(`No se pudo conectar a la base de datos: ${err}`);
-    });
 
 // Función para escribir en el archivo de log
 function logToFile(message) {
@@ -66,3 +72,14 @@ function logToFile(message) {
         }
     });
 }
+
+// Verificación de la conexión con la base de datos
+sequelize.authenticate()
+    .then(() => {
+        console.log('Conexión con la base de datos establecida correctamente.');
+        logToFile('Conexión con la base de datos establecida correctamente.');
+    })
+    .catch(err => {
+        console.error('No se pudo conectar a la base de datos:', err);
+        logToFile(`No se pudo conectar a la base de datos: ${err}`);
+    });

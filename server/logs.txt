@@ -17,3 +17,23 @@
 2025-04-01T03:52:06.160Z - Se visitó la ruta principal ("/")
 2025-04-01T03:52:06.183Z - Se visitó la ruta principal ("/")
 2025-04-01T03:52:06.187Z - Se visitó la ruta principal ("/")
+2025-04-02T02:04:48.212Z - Servidor corriendo en http://localhost:5000
+2025-04-02T02:04:48.399Z - No se pudo conectar a la base de datos: SequelizeAccessDeniedError: Access denied for user 'root'@'localhost' (using password: YES)
+2025-04-02T02:05:57.335Z - Servidor corriendo en http://localhost:5000
+2025-04-02T02:05:57.596Z - Conexión con la base de datos establecida correctamente.
+2025-04-02T02:07:38.154Z - Se visitó la ruta principal ("/")
+2025-04-02T02:07:38.162Z - Se visitó la ruta principal ("/")
+2025-04-02T02:07:38.424Z - Se visitó la ruta principal ("/")
+2025-04-02T02:07:38.432Z - Se visitó la ruta principal ("/")
+2025-04-02T18:20:20.388Z - Servidor corriendo en http://localhost:5000
+2025-04-02T18:20:20.535Z - Conexión con la base de datos establecida correctamente.
+2025-04-02T18:22:34.808Z - Se visitó la ruta principal ("/")
+2025-04-02T18:22:34.817Z - Se visitó la ruta principal ("/")
+2025-04-02T19:10:02.193Z - Se visitó la ruta principal ("/")
+2025-04-02T19:10:02.199Z - Se visitó la ruta principal ("/")
+2025-04-02T19:16:17.705Z - Se visitó la ruta principal ("/")
+2025-04-02T19:16:17.709Z - Se visitó la ruta principal ("/")
+2025-04-02T20:53:33.587Z - Servidor corriendo en http://localhost:5000
+2025-04-02T20:53:33.751Z - Conexión con la base de datos establecida correctamente.
+2025-04-02T20:54:29.036Z - Se visitó la ruta principal ("/")
+2025-04-02T20:54:29.046Z - Se visitó la ruta principal ("/")
