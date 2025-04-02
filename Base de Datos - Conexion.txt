@@ -1,0 +1,9 @@
+https://account.proton.me/es/mail
+hifivedevs@proton.me
+ifts29LCDTM
+
+https://www.db4free.net
+MySQL database name:  	pp4_proyinte
+MySQL username:  		pp4_root
+MySQL user password:  	Sabbah2505
+https://www.db4free.net/phpMyAdmin/
