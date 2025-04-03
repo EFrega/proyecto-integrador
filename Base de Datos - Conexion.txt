@@ -6,4 +6,6 @@ https://www.db4free.net
 MySQL database name:  	pp4_proyinte
 MySQL username:  		pp4_root
 MySQL user password:  	Sabbah2505
+Hostname:               db4free.net
+Port:                   3306
 https://www.db4free.net/phpMyAdmin/
