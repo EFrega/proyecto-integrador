@@ -37,3 +37,19 @@
 2025-04-02T20:53:33.751Z - Conexión con la base de datos establecida correctamente.
 2025-04-02T20:54:29.036Z - Se visitó la ruta principal ("/")
 2025-04-02T20:54:29.046Z - Se visitó la ruta principal ("/")
+2025-04-03T00:08:23.201Z - Servidor corriendo en http://db4free.net:5000
+2025-04-03T00:08:27.947Z - Conexión con la base de datos establecida correctamente.
+2025-04-03T00:09:30.798Z - Servidor corriendo en http://localhost:5000
+2025-04-03T00:09:33.448Z - Conexión con la base de datos establecida correctamente.
+2025-04-03T00:11:35.726Z - Se visitó la ruta principal ("/")
+2025-04-03T00:11:35.735Z - Se visitó la ruta principal ("/")
+2025-04-03T00:22:36.688Z - Se visitó la ruta principal ("/")
+2025-04-03T00:22:36.699Z - Se visitó la ruta principal ("/")
+2025-04-03T00:24:49.574Z - Se visitó la ruta principal ("/")
+2025-04-03T00:24:49.587Z - Se visitó la ruta principal ("/")
+2025-04-03T00:53:49.554Z - Servidor corriendo en http://localhost:5000
+2025-04-03T00:53:52.942Z - Conexión con la base de datos establecida correctamente.
+2025-04-03T01:20:25.595Z - Servidor corriendo en http://localhost:5000
+2025-04-03T01:20:30.577Z - Conexión con la base de datos establecida correctamente.
+2025-04-03T01:44:12.111Z - Servidor corriendo en http://localhost:5000
+2025-04-03T01:44:15.635Z - Conexión con la base de datos establecida correctamente.

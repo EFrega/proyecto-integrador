@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';  // Importamos Link para la navegación
 import './login.css';
 
 const Login = () => {
@@ -12,22 +13,22 @@ const Login = () => {
         console.log("Formulario enviado"); // Esto debería aparecer en la consola
 
         try {
-        // Realizamos la solicitud POST al backend para autenticar al usuario
-        const response = await axios.post('http://localhost:5000/login', {
-            usuario,
-            contrasena,
-        });
+            // Realizamos la solicitud POST al backend para autenticar al usuario
+            const response = await axios.post('http://localhost:5000/login', {
+                usuario,
+                contrasena,
+            });
 
-        // Si la autenticación es exitosa, guardamos el token en localStorage
-        localStorage.setItem('token', response.data.token);
+            // Si la autenticación es exitosa, guardamos el token en localStorage
+            localStorage.setItem('token', response.data.token);
 
-        // Mostrar un pop-up de éxito
-        alert('¡Login exitoso!');
+            // Mostrar un pop-up de éxito
+            alert('¡Login exitoso!');
 
-        // Limpiar los campos de entrada
-        setUsuario('');
-        setContrasena('');
-        setError('');
+            // Limpiar los campos de entrada
+            setUsuario('');
+            setContrasena('');
+            setError('');
 
         } catch (err) {
             if (err.response && err.response.data) {
@@ -40,34 +41,36 @@ const Login = () => {
         }
     };
 
+    return (
+        <div className="login-container">
+            <h2>Iniciar sesión</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Usuario</label>
+                    <input
+                        type="text"
+                        value={usuario}
+                        onChange={(e) => setUsuario(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Contraseña</label>
+                    <input
+                        type="password"
+                        value={contrasena}
+                        onChange={(e) => setContrasena(e.target.value)}
+                        required
+                    />
+                </div>
+                {error && <p className="error">{error}</p>} {/* Mostrar error si lo hay */}
+                <div>
+                    <button type="submit">Iniciar sesión</button>
+                </div>
+            </form>
 
-return (
-    <div className="login-container">
-        <h2>Iniciar sesión</h2>
-        <form onSubmit={handleSubmit}>
-            <div>
-            <label>Usuario</label>
-            <input
-                type="text"
-                value={usuario}
-                onChange={(e) => setUsuario(e.target.value)}
-                required
-            />
-            </div>
-            <div>
-            <label>Contraseña</label>
-            <input
-                type="password"
-                value={contrasena}
-                onChange={(e) => setContrasena(e.target.value)}
-                required
-            />
-            </div>
-            {error && <p className="error">{error}</p>} {/* Mostrar error si lo hay */}
-            <div>
-            <button type="submit">Iniciar sesión</button>
-            </div>
-        </form>
+            {/* Enlace hacia el formulario de registro */}
+            <p>¿No tienes cuenta? <Link to="/registro">Regístrate aquí</Link></p>
         </div>
     );
 };

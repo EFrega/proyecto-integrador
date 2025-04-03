@@ -1,11 +1,11 @@
 const bcrypt = require('bcryptjs');
-//const { sequelize } = require('./config/database');  // Asegúrate de importar correctamente la configuración de sequelize
-const sequelize = require('./config/database');  // Asegúrate de que la ruta sea correcta
-const Usuario = require('./models/usuarios');  // El modelo de Usuario
+const sequelize = require('./config/database');  // La instancia de sequelize
+const { Usuario } = require('./models/usuarios')(sequelize, require('sequelize').DataTypes);  // Pasa sequelize y DataTypes al modelo
+
+console.log(Usuario);  // Verifica que el modelo `Usuario` tiene métodos como `findAll`
 
 async function encryptPasswords() {
     try {
-        
         // Obtén todos los usuarios de la base de datos
         const usuarios = await Usuario.findAll();
 
@@ -29,7 +29,14 @@ async function encryptPasswords() {
 sequelize.authenticate()
     .then(() => {
         console.log('Conexión con la base de datos establecida correctamente.');
-        encryptPasswords();  // Llama a la función para cifrar las contraseñas
+        // Sincronizar los modelos con la base de datos
+        sequelize.sync()
+            .then(() => {
+                encryptPasswords();  // Llama a la función para cifrar las contraseñas
+            })
+            .catch(err => {
+                console.error('Error al sincronizar la base de datos:', err);
+            });
     })
     .catch(err => {
         console.error('No se pudo conectar a la base de datos:', err);

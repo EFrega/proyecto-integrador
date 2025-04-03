@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
         const usuarioDb = await Usuario.findOne({ where: { usuario } });
 
         if (!usuarioDb) {
-            return res.status(401).json({ message: 'Credenciales incorrectas' });
+            return res.status(401).json({ message: 'No existe el usuario' });
         }
 
         // Comparamos la contraseña proporcionada con la almacenada en la base de datos
