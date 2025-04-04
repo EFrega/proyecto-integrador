@@ -1,7 +1,7 @@
 // models/Informe.js
 
 module.exports = (sequelize, DataTypes) => {
-    const Informe = sequelize.define('Informe', {
+    const Informe = sequelize.define('Informes', {
         idInformes: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -40,10 +40,10 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Informe.associate = function(models) {
         // Definimos las relaciones con las otras tablas
-        Informe.belongsTo(models.Profesional, { foreignKey: 'idProfesional', as: 'profesional' });
-        Informe.belongsTo(models.Paciente, { foreignKey: 'idPaciente', as: 'paciente' });
-        Informe.belongsTo(models.Estudio, { foreignKey: 'idEstudio', as: 'estudio' });
-        Informe.belongsTo(models.Resultado, { foreignKey: 'idResultado', as: 'resultado' });
+        Informe.belongsTo(models.Profesionales, { foreignKey: 'idProfesional', as: 'profesional' });
+        Informe.belongsTo(models.Pacientes, { foreignKey: 'idPaciente', as: 'paciente' });
+        Informe.belongsTo(models.Estudios, { foreignKey: 'idEstudio', as: 'estudio' });
+        Informe.belongsTo(models.Resultados, { foreignKey: 'idResultado', as: 'resultado' });
     };
 
     return Informe;

@@ -1,7 +1,7 @@
 // models/Horario.js
 
 module.exports = (sequelize, DataTypes) => {
-    const Horario = sequelize.define('Horario', {
+    const Horario = sequelize.define('Horarios', {
         idProfesional: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Horario.associate = function(models) {
         // Relación con la tabla Profesional
-        Horario.belongsTo(models.Profesional, { foreignKey: 'idProfesional', as: 'profesional' });
+        Horario.belongsTo(models.Profesionales, { foreignKey: 'idProfesional', as: 'profesional' });
     };
 
     return Horario;

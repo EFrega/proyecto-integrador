@@ -1,6 +1,6 @@
 // models/HistoriaClinica.js
 module.exports = (sequelize, DataTypes) => {
-    const HistoriaClinica = sequelize.define('HistoriaClinica', {
+    const HistoriaClinica = sequelize.define('HistoriasClinicas', {
       // Definición de los atributos de la tabla
         idHistoriaClinica: {
             type: DataTypes.INTEGER,
@@ -43,17 +43,17 @@ module.exports = (sequelize, DataTypes) => {
 
     // Relaciones con otras tablas
     HistoriaClinica.associate = (models) => {
-        HistoriaClinica.belongsTo(models.Estudio, {
+        HistoriaClinica.belongsTo(models.Estudios, {
             foreignKey: 'idEstudio',
             as: 'estudio', // Alias para acceder a la relación
         });
 
-        HistoriaClinica.belongsTo(models.Servicio, {
+        HistoriaClinica.belongsTo(models.Servicios, {
             foreignKey: 'idServicio',
             as: 'servicio', // Alias para acceder a la relación
         });
 
-        HistoriaClinica.belongsTo(models.Resultado, {
+        HistoriaClinica.belongsTo(models.Resultados, {
             foreignKey: 'idResultado',
             as: 'resultado', // Alias para acceder a la relación
         });

@@ -1,6 +1,6 @@
 // models/Paciente.js
 module.exports = (sequelize, DataTypes) => {
-    const Paciente = sequelize.define('Paciente', {
+    const Paciente = sequelize.define('Pacientes', {
       // Definición de los atributos de la tabla
         idPaciente: {
             type: DataTypes.INTEGER,
@@ -56,13 +56,13 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Paciente.associate = (models) => {
       // Relación con la tabla FichasMedicas
-        Paciente.belongsTo(models.FichaMedica, {
+        Paciente.belongsTo(models.FichasMedicas, {
             foreignKey: 'idFichaMedica',
             as: 'fichaMedica',
         });
 
       // Relación con la tabla Usuarios
-        Paciente.belongsTo(models.Usuario, {
+        Paciente.belongsTo(models.Usuarios, {
             foreignKey: 'idUsuario',
             as: 'usuario',
         });

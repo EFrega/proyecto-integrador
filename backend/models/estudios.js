@@ -1,6 +1,6 @@
 // models/Estudio.js
 module.exports = (sequelize, DataTypes) => {
-    const Estudio = sequelize.define('Estudio', {
+    const Estudio = sequelize.define('Estudios', {
       // Definición de los atributos de la tabla
         idEstudio: {
             type: DataTypes.INTEGER,

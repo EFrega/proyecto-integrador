@@ -1,6 +1,6 @@
 // models/FichaMedica.js
 module.exports = (sequelize, DataTypes) => {
-    const FichaMedica = sequelize.define('FichaMedica', {
+    const FichaMedica = sequelize.define('FichasMedicas', {
       // Definición de los atributos de la tabla
         idFichaMedica: {
             type: DataTypes.INTEGER,
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 
     // Relaciones con otras tablas
     FichaMedica.associate = (models) => {
-        FichaMedica.belongsTo(models.HistoriaClinica, {
+        FichaMedica.belongsTo(models.HistoriasClinicas, {
             foreignKey: 'idHistoriaClinica',
             as: 'historiaClinica', // Alias para acceder a la relación
         });

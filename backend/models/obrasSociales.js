@@ -1,6 +1,6 @@
 // models/ObraSocial.js
 module.exports = (sequelize, DataTypes) => {
-    const ObraSocial = sequelize.define('ObraSocial', {
+    const ObraSocial = sequelize.define('ObrasSociales', {
       // Definición de los atributos de la tabla
         idObraSocial: {
             type: DataTypes.INTEGER,

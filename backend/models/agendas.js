@@ -1,7 +1,7 @@
 // models/Agenda.js
 
 module.exports = (sequelize, DataTypes) => {
-    const Agenda = sequelize.define('Agenda', {
+    const Agenda = sequelize.define('Agendas', {
         idProfesional: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -31,13 +31,13 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Agenda.associate = function(models) {
         // Relación con la tabla Profesional
-        Agenda.belongsTo(models.Profesional, { foreignKey: 'idProfesional', as: 'profesional' });
+        Agenda.belongsTo(models.Profesionales, { foreignKey: 'idProfesional', as: 'profesional' });
     
         // Relación con la tabla Consultorio
-        Agenda.belongsTo(models.Consultorio, { foreignKey: 'idConsultorio', as: 'consultorio' });
+        Agenda.belongsTo(models.Consultorios, { foreignKey: 'idConsultorio', as: 'consultorio' });
     
         // Relación con la tabla Servicio
-        Agenda.belongsTo(models.Servicio, { foreignKey: 'idServicio', as: 'servicio' });
+        Agenda.belongsTo(models.Servicios, { foreignKey: 'idServicio', as: 'servicio' });
     };
 
     return Agenda;

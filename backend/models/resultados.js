@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 
     // Relación con la tabla `estudios`
     Resultado.associate = (models) => {
-        Resultado.belongsTo(models.Estudio, {
+        Resultado.belongsTo(models.Estudios, {
             foreignKey: 'idEstudio',
             as: 'estudio', // Alias para acceder a la relación
         });

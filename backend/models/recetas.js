@@ -1,7 +1,7 @@
 // models/Receta.js
 
 module.exports = (sequelize, DataTypes) => {
-    const Receta = sequelize.define('Receta', {
+    const Receta = sequelize.define('Recetas', {
         idPaciente: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Receta.associate = function(models) {
         // Relación con la tabla Paciente
-        Receta.belongsTo(models.Paciente, { foreignKey: 'idPaciente', as: 'paciente' });
+        Receta.belongsTo(models.Pacientes, { foreignKey: 'idPaciente', as: 'paciente' });
     
         // Relación con la tabla Profesional
-        Receta.belongsTo(models.Profesional, { foreignKey: 'idProfesional', as: 'profesional' });
+        Receta.belongsTo(models.Profesionales, { foreignKey: 'idProfesional', as: 'profesional' });
     };
 
     return Receta;

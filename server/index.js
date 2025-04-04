@@ -6,7 +6,7 @@ const cors = require('cors');
 const fs = require('fs');
 const loginRoutes = require('../routes/loginRoute');  // Importamos las rutas de login
 const authenticateToken = require('../middlewares/auth');  // Middleware para la autenticación del token
-const sequelize = require('../config/database');  // Importamos la configuración de la base de datos
+const { sequelize } = require('../config/database');  // Importamos la configuración de la base de datos
 const { Usuario } = require('../models/usuarios');  // Asegúrate de tener el modelo de Usuario importado correctamente
 
 // Crear la aplicación de Express

@@ -1,7 +1,7 @@
 // models/Turno.js
 
 module.exports = (sequelize, DataTypes) => {
-    const Turno = sequelize.define('Turno', {
+    const Turno = sequelize.define('Turnos', {
         idTurno: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -44,13 +44,13 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Turno.associate = function(models) {
         // Relación con la tabla Profesional
-        Turno.belongsTo(models.Profesional, { foreignKey: 'idProfesional', as: 'profesional' });
+        Turno.belongsTo(models.Profesionales, { foreignKey: 'idProfesional', as: 'profesional' });
         // Relación con la tabla Consultorio
-        Turno.belongsTo(models.Consultorio, { foreignKey: 'idConsultorio', as: 'consultorio' });
+        Turno.belongsTo(models.Consultorios, { foreignKey: 'idConsultorio', as: 'consultorio' });
         // Relación con la tabla Servicio
-        Turno.belongsTo(models.Servicio, { foreignKey: 'idServicio', as: 'servicio' });
+        Turno.belongsTo(models.Servicios, { foreignKey: 'idServicio', as: 'servicio' });
         // Relación con la tabla Paciente
-        Turno.belongsTo(models.Paciente, { foreignKey: 'idPaciente', as: 'paciente' });
+        Turno.belongsTo(models.Pacientes, { foreignKey: 'idPaciente', as: 'paciente' });
     };
 
     return Turno;

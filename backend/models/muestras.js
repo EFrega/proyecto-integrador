@@ -1,7 +1,7 @@
 // models/Muestra.js
 
 module.exports = (sequelize, DataTypes) => {
-    const Muestra = sequelize.define('Muestra', {
+    const Muestra = sequelize.define('Muestras', {
         idMuestra: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -36,9 +36,9 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Muestra.associate = function(models) {
         // Relación con la tabla Paciente
-        Muestra.belongsTo(models.Paciente, { foreignKey: 'idPaciente', as: 'paciente' });
+        Muestra.belongsTo(models.Pacientes, { foreignKey: 'idPaciente', as: 'paciente' });
         // Relación con la tabla Resultado
-        Muestra.belongsTo(models.Resultado, { foreignKey: 'idResultado', as: 'resultado' });
+        Muestra.belongsTo(models.Resultados, { foreignKey: 'idResultado', as: 'resultado' });
     };
 
     return Muestra;

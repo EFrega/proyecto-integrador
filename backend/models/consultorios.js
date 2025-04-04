@@ -1,6 +1,6 @@
 // models/Consultorio.js
 module.exports = (sequelize, DataTypes) => {
-    const Consultorio = sequelize.define('Consultorio', {
+    const Consultorio = sequelize.define('Consultorios', {
       // Definición de los atributos de la tabla
         idConsultorio: {
             type: DataTypes.INTEGER,
@@ -35,18 +35,18 @@ module.exports = (sequelize, DataTypes) => {
 
     // Relaciones
     Consultorio.associate = (models) => {
-        Consultorio.belongsTo(models.Profesional, {
+        Consultorio.belongsTo(models.Profesionales, {
             foreignKey: 'idProfesional',
             as: 'profesional',
         });
 
-        Consultorio.belongsTo(models.Insumo, {
+        Consultorio.belongsTo(models.Insumos, {
             foreignKey: 'idInsumo',
             as: 'insumo',
         });
 
       // Si necesitas también la relación con el servicio:
-        Consultorio.belongsTo(models.Servicio, {
+        Consultorio.belongsTo(models.Servicios, {
             foreignKey: 'idServicio',
             as: 'servicio',
         });

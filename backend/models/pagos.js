@@ -1,7 +1,7 @@
 // models/Pago.js
 
 module.exports = (sequelize, DataTypes) => {
-    const Pago = sequelize.define('Pago', {
+    const Pago = sequelize.define('Pagos', {
         idPaciente: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -35,13 +35,13 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     Pago.associate = function(models) {
         // Relación con la tabla Paciente
-        Pago.belongsTo(models.Paciente, { foreignKey: 'idPaciente', as: 'paciente' });
+        Pago.belongsTo(models.Pacientes, { foreignKey: 'idPaciente', as: 'paciente' });
     
         // Relación con la tabla Servicio
-        Pago.belongsTo(models.Servicio, { foreignKey: 'idServicio', as: 'servicio' });
+        Pago.belongsTo(models.Servicios, { foreignKey: 'idServicio', as: 'servicio' });
     
         // Relación con la tabla Obra Social
-        Pago.belongsTo(models.ObraSocial, { foreignKey: 'idObraSocial', as: 'obraSocial' });
+        Pago.belongsTo(models.ObrasSociales, { foreignKey: 'idObraSocial', as: 'obraSocial' });
     };
 
     return Pago;

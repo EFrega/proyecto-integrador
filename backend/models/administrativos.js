@@ -1,6 +1,6 @@
 // models/Administrativo.js
 module.exports = (sequelize, DataTypes) => {
-    const Administrativo = sequelize.define('Administrativo', {
+    const Administrativo = sequelize.define('Administrativos', {
       // Definición de los atributos de la tabla
         idAdministrativo: {
             type: DataTypes.INTEGER,

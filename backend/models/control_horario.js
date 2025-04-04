@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones con otras tablas
     ControlHorario.associate = function(models) {
         // Relación con la tabla Profesional
-        ControlHorario.belongsTo(models.Profesional, { foreignKey: 'idProfesional', as: 'profesional' });
+        ControlHorario.belongsTo(models.Profesionales, { foreignKey: 'idProfesional', as: 'profesional' });
     };
 
     return ControlHorario;

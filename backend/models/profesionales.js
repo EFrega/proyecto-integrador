@@ -1,6 +1,6 @@
 // models/Profesional.js
 module.exports = (sequelize, DataTypes) => {
-    const Profesional = sequelize.define('Profesional', {
+    const Profesional = sequelize.define('Profesionales', {
         idProfesional: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
     // Relaciones (FK)
     Profesional.associate = (models) => {
       // Relación con el modelo 'Servicio'
-        Profesional.belongsTo(models.Servicio, {
+        Profesional.belongsTo(models.Servicios, {
         foreignKey: 'idServicio',
         as: 'servicio'
         });

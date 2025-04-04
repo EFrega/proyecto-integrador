@@ -1,6 +1,6 @@
 // models/Insumo.js
 module.exports = (sequelize, DataTypes) => {
-    const Insumo = sequelize.define('Insumo', {
+    const Insumo = sequelize.define('Insumos', {
       idInsumo: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -26,6 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       observaciones: {
         type: DataTypes.STRING(50),
         allowNull: true
+      },
+      baja: {
+        type: INTEGER(1),
+        allowNull: false,
+        defaultValue: 0
       }
     }, {
       // Opciones adicionales del modelo
