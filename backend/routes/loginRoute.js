@@ -1,8 +1,8 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const sequelize = require('../config/database');  // Importamos la instancia de sequelize
-const Usuario = require('../models/usuarios');  // Esta es la importación correcta
-const usuarioModelo = Usuario(sequelize, require('sequelize').DataTypes);  // Llamamos a la función que define el modelo
+const Usuario = require('../models/usuarios');  // Importamos directamente la función
+const usuarioModelo = Usuario(sequelize, require('sequelize').DataTypes);  // Ejecutamos la función y obtenemos el modelo
 console.log("Modelo Usuario en loginRoute:", Usuario); // Esto debería mostrar el modelo o undefined
 const router = express.Router();
 

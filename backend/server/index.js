@@ -7,10 +7,9 @@ const fs = require('fs');
 const loginRoutes = require('../routes/loginRoute');  // Importamos las rutas de login
 const authenticateToken = require('../middlewares/auth');  // Middleware para la autenticación del token
 const sequelize = require('../config/database');  // Importamos la configuración de la base de datos
-const Usuario = require('../models/usuarios');  // Esta es la importación correcta
-const usuarioModelo = Usuario(sequelize, require('sequelize').DataTypes);  // Llamamos a la función que define el modelo
-// Asegúrate de que el modelo se está importando correctamente
-console.log("Modelo Usuario en index.js:", Usuario);
+const Usuario = require('../models/usuarios');  // Importamos directamente la función
+const usuarioModelo = Usuario(sequelize, require('sequelize').DataTypes);  // Ejecutamos la función y obtenemos el modelo
+console.log("Modelo Usuario en index.js:", Usuario); // Verifica que el modelo se cargue correctamente
 
 // Crear la aplicación de Express
 const app = express();
