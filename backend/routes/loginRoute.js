@@ -1,7 +1,8 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const sequelize = require('../config/database');  // Importamos la instancia de sequelize
-const { Usuario } = require('../models/usuarios')(sequelize, require('sequelize').DataTypes);  // Asegúrate de que el modelo Usuario esté importado correctamente
+const Usuario = require('../models/usuarios');  // Esta es la importación correcta
+const usuarioModelo = Usuario(sequelize, require('sequelize').DataTypes);  // Llamamos a la función que define el modelo
 console.log("Modelo Usuario en loginRoute:", Usuario); // Esto debería mostrar el modelo o undefined
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.post('/', async (req, res) => {
 
     try {
         console.log("Intentando encontrar el usuario en la base de datos...");
-        const usuarioDb = await Usuario.findOne({ where: { usuario } });
+        const usuarioDb = await usuarioModelo.findOne({ where: { usuario } });
         console.log('Usuario encontrado:', usuarioDb); // Aquí vemos si el usuario se encuentra correctamente
 
         if (!usuarioDb) {

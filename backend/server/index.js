@@ -7,8 +7,8 @@ const fs = require('fs');
 const loginRoutes = require('../routes/loginRoute');  // Importamos las rutas de login
 const authenticateToken = require('../middlewares/auth');  // Middleware para la autenticación del token
 const sequelize = require('../config/database');  // Importamos la configuración de la base de datos
-const { Usuario } = require('../models/usuarios')(sequelize, require('sequelize').DataTypes);  // Asegúrate de tener el modelo de Usuario importado correctamente
-
+const Usuario = require('../models/usuarios');  // Esta es la importación correcta
+const usuarioModelo = Usuario(sequelize, require('sequelize').DataTypes);  // Llamamos a la función que define el modelo
 // Asegúrate de que el modelo se está importando correctamente
 console.log("Modelo Usuario en index.js:", Usuario);
 
@@ -47,7 +47,7 @@ app.get('/usuarios/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
 
     try {
-        const usuario = await Usuario.findOne({ where: { idUsuario: id } });
+        const usuario = await usuarioModelo.findOne({ where: { idUsuario: id } });
         
         if (!usuario) {
             return res.status(404).json({ message: 'Usuario no encontrado' });

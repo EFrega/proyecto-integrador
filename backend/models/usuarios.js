@@ -2,7 +2,7 @@
 const bcrypt = require('bcryptjs');  // Necesitamos bcrypt para cifrar y comparar contraseñas
 
 console.log("Cargando el modelo Usuario...");
-module.exports = (sequelize, DataTypes) => {
+const Usuario = (sequelize, DataTypes) => {
   const Usuario = sequelize.define('Usuarios', {
     idUsuario: {
       type: DataTypes.INTEGER,
@@ -50,3 +50,5 @@ module.exports = (sequelize, DataTypes) => {
 
   return Usuario;
 };
+
+module.exports = Usuario;
