@@ -1,6 +1,7 @@
 // models/Usuario.js
 const bcrypt = require('bcryptjs');  // Necesitamos bcrypt para cifrar y comparar contraseñas
 
+console.log("Cargando el modelo Usuario...");
 module.exports = (sequelize, DataTypes) => {
   const Usuario = sequelize.define('Usuarios', {
     idUsuario: {
@@ -44,6 +45,8 @@ module.exports = (sequelize, DataTypes) => {
   Usuario.prototype.comparePassword = async function(contrasena) {
     return bcrypt.compare(contrasena, this.contrasena);  // Compara la contraseña proporcionada con la almacenada
   };
+
+  console.log("Modelo Usuario cargado correctamente");
 
   return Usuario;
 };

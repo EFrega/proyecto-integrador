@@ -7,7 +7,10 @@ const fs = require('fs');
 const loginRoutes = require('../routes/loginRoute');  // Importamos las rutas de login
 const authenticateToken = require('../middlewares/auth');  // Middleware para la autenticación del token
 const sequelize = require('../config/database');  // Importamos la configuración de la base de datos
-const { Usuario } = require('../models/usuarios');  // Asegúrate de tener el modelo de Usuario importado correctamente
+const { Usuario } = require('../models/usuarios')(sequelize, require('sequelize').DataTypes);  // Asegúrate de tener el modelo de Usuario importado correctamente
+
+// Asegúrate de que el modelo se está importando correctamente
+console.log("Modelo Usuario en index.js:", Usuario);
 
 // Crear la aplicación de Express
 const app = express();
@@ -44,7 +47,7 @@ app.get('/usuarios/:id', authenticateToken, async (req, res) => {
     const { id } = req.params;
 
     try {
-        const usuario = await Usuario.findOne({ where: { Usuario: usuario } });
+        const usuario = await Usuario.findOne({ where: { idUsuario: id } });
         
         if (!usuario) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
@@ -52,7 +55,7 @@ app.get('/usuarios/:id', authenticateToken, async (req, res) => {
         
         res.json(usuario);
     } catch (err) {
-        return res.status(500).send('Error en el servidor');
+        return res.status(500).send('Error en el servidooor');
     }
 });
 
